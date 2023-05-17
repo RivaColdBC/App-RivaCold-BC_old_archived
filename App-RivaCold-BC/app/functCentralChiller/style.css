@@ -1,0 +1,65 @@
+input {
+  text-align: end;
+  vertical-align: middle;
+  border: none;
+  text-align: center;
+  width: 100%;
+}
+
+span {
+  vertical-align: middle;
+}
+
+select {
+  align-items: center;
+  text-align: center;
+  font: bolder 12pt Arial;
+}
+
+th.bolder,
+option {
+  font: bolder 12pt Arial;
+}
+
+@media print {
+
+  input.form-control,
+  select.form-select {
+    border: none;
+    padding: none;
+    margin: none;
+  }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+table.table {
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  width: auto;
+}
+
+thead {
+  border: 1px cadetblue;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: 0;
+}
+
+body {
+  font: normal 9.5pt Arial;
+  padding: 0.5cm;
+  margin: 0cm auto;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}

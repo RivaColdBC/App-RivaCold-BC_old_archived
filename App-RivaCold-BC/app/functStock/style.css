@@ -1,0 +1,27 @@
+button,
+th,
+tr,
+table {
+    padding: 0;
+    margin: 0;
+}
+
+button.dropdown-toggle {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    text-align: center;
+}
+
+nav button {
+    width: auto;
+
+}
+
+img {
+    height: 100px;
+    width: auto;
+}

@@ -1,0 +1,82 @@
+input {
+  text-align: end;
+  vertical-align: middle;
+  border: none;
+  text-align: center;
+  width: 90%;
+}
+
+span {
+  vertical-align: middle;
+}
+
+select {
+  align-items: center;
+  text-align: center;
+  font: bolder 12pt Arial;
+
+}
+
+option {
+  font: bolder 12pt Arial;
+}
+
+th.bolder {
+  font: bolder 12pt Arial;
+}
+
+@media print {
+
+  input.form-control,
+  select.form-select {
+    border: none;
+    padding: none;
+    margin: none;
+  }
+
+  tr.button_hidden {
+    display: none;
+    visibility: hidden;
+
+  }
+}
+
+body {
+  font: normal 12pt Arial;
+  width: 28.0cm;
+  min-height: 29.7cm;
+  padding: 0cm;
+  margin: 0cm auto;
+  border-radius: 0px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+table {
+  text-align: center;
+}
+
+thead {
+  border: 1px cadetblue;
+}
+
+td,
+tr {
+  border: 1px cadetblue;
+
+}
+
+input#Carga_Total {
+  font-size: large;
+  font: bold;
+  font-weight: bold;
+}
+
+ th {
+  width: 25%;
+}

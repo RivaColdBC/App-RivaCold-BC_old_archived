@@ -1,0 +1,15 @@
+input,
+label,
+th,
+tr,
+td,
+table,
+tbody,
+thead {
+    border: 0;
+    padding: 0;
+}
+
+input {
+    align-items: center;
+}

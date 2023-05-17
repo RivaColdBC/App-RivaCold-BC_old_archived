@@ -1,0 +1,16 @@
+table,
+thead,
+tbody,
+th,
+tr,
+td {
+    padding: 0cm;
+    margin: 0cm;
+    border: 0;
+}
+
+@media print {
+    select {
+        display:block;
+    }
+}

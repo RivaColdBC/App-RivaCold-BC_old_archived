@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <title>RivaColdSelect - Función calculadora càmara</title>
+</head>
+
+<body onchange="CalcPotencia(),Unidad()">
+  <div class="row">
+    <img src="../../resources/A4-21 cm Logo nuevo+arbol.jpg" style="width: 100%;
+    height: auto;" />
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div id="myPlotPotencia"></div>
+      <center>
+        <table class="table">
+          <thead>
+            <tr>
+              <th colspan="2">RESULTADO DE<br>LA DEMANDA FRIGORÍFICA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="bolder"> Dimensión<br>Cámara</th>
+              <th> <input id="Dimensión" name="m3" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder"> Carga<br>Térmica </th>
+              <th> <input id="Carga_Termica" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Aire</th>
+              <th> <input id="Carga_Aire" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Interna</th>
+              <th> <input id="Carga_Interna" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Producto</th>
+              <th> <input id="Carga_Producto" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Respiración</th>
+              <th> <input id="Carga_Resp" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Ventilación</th>
+              <th> <input id="Carga_Fan" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Seguridad</th>
+              <th> <input id="Carga_Otra" name="W" readonly> </th>
+            </tr>
+            <tr>
+              <th class="bolder">Carga<br>Total</th>
+              <th> <input id="Carga_Total" name="W" readonly> </th>
+            </tr>
+            <tr class="button_hidden">
+              <th colspan="2">
+                <div class='dropdown'>
+                  <button id='buttondropdown_equipo' class='btn btn-primary dropdown-toggle' type='button'
+                    data-bs-toggle='dropdown' aria-expanded='false' style="width:100%">Equipo RIVACOLD</button>
+                  <ul class='dropdown-menu' id='dropdown_equipo' style="width:100%"> </ul>
+                </div>
+              </th>
+            </tr>
+            <tr class="button_hidden">
+              <th colspan="2">
+                <div class='dropdown'>
+                  <button id='buttondropdown_camara' class='btn btn-primary dropdown-toggle' type='button'
+                    data-bs-toggle='dropdown' aria-expanded='false' style="width:100%">Cámara COLDKIT</button>
+                  <ul class='dropdown-menu' id='dropdown_camara' style="width:100%"></ul>
+                </div>
+              </th>
+          </tbody>
+        </table>
+      </center>
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"> INFORME DE DEMANDA FRIGORÍFICA </th>
+          </tr>
+          <tr>
+            <th colspan="4">
+              <select class="form-select" id="Select_Prederminado" onchange="CatalogoPreterminado()">
+                <option value="0">Cámara de congelación</option>
+                <option value="1" selected>Cámara de conservación</option>
+                <option value="2">Sala de trabajo</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th> Temp. Ambiente </th>
+            <th> H.R. Ambiente </th>
+            <th> Temp. Cámara </th>
+            <th> H.R. Cámara </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              <input type="text" id="Temp_Amb" class="form-control" name="°C" value="43 °C" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="%" id="HR_Amb" value="70 %" />
+            </th>
+            <th>
+              <input type="text" id="Temp_Camara" name="°C" class="form-control" value="0 °C" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="%" id="HR_Camara" value="70 %" />
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <table onchange="Unidad(),CalcPotencia()" class="table">
+        <thead>
+          <tr>
+            <th colspan="4">DIMENSIÓN DE LA CÁMARA</th>
+          </tr>
+          <tr>
+            <th> </th>
+            <th> Longitud </th>
+            <th> Grosor </th>
+            <th> Material </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bolder"> A </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Length_A_C" value="5 m" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="mm" id="Delta_A" value="80 mm" onchange="Grosor()" />
+            </th>
+            <th>
+              <select class="form-select" id="Material_A" onchange="Material()">
+                <option value="40.0">Panel 40kg/m3</option>
+                <option value="34.5">Panel 51kg/m3</option>
+                <option value="50.0">Panel 30kg/m3</option>
+                <option value="6.66">Cemento 500kg/m3</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> B </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Length_B_D" value="5 m" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="mm" id="Delta_B" value="80 mm" />
+            </th>
+            <th>
+              <select class="form-select" id="Material_B">
+                <option value="40.0">Panel 40kg/m3</option>
+                <option value="34.5">Panel 51kg/m3</option>
+                <option value="50.0">Panel 30kg/m3</option>
+                <option value="6.66">Cemento 500kg/m3</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> C </th>
+            <th></th>
+            <th>
+              <input type="text" class="form-control" name="mm" id="Delta_C" value="80 mm" />
+            </th>
+            <th>
+              <select class="form-select" id="Material_C">
+                <option value="40.0">Panel 40kg/m3</option>
+                <option value="34.5">Panel 51kg/m3</option>
+                <option value="50.0">Panel 30kg/m3</option>
+                <option value="6.66">Cemento 500kg/m3</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> D </th>
+            <th>
+            </th>
+            <th>
+              <input type="text" class="form-control" name="mm" id="Delta_D" value="80 mm" />
+            </th>
+            <th>
+              <select class="form-select" id="Material_D">
+                <option value="40.0">Panel 40kg/m3</option>
+                <option value="34.5">Panel 51kg/m3</option>
+                <option value="50.0">Panel 30kg/m3</option>
+                <option value="6.66">Cemento 500kg/m3</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> Techo </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Height" value="2 m" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="mm" id="Delta_Ceiling" value="80 mm" />
+            </th>
+            <th>
+              <select class="form-select" id="Material_Ceiling">
+                <option value="40.0">Panel 40kg/m3</option>
+                <option value="34.5">Panel 51kg/m3</option>
+                <option value="50.0">Panel 30kg/m3</option>
+                <option value="6.66">Cemento 500kg/m3</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> Suelo </th>
+            <th class="bolder"> <span>No aislado <input type="checkbox" id="Suelo_Aislamiento_Check"
+                  oninput="Aislamiento_Suelo()"></span>
+            </th>
+            <th>
+              <input type="text" class="form-control" name="mm" id="Delta_Floor" value="80 mm" />
+            </th>
+            <th>
+              <select class="form-select" id="Material_Floor">
+                <option value="40.0">Panel 40kg/m3</option>
+                <option value="34.5">Panel 51kg/m3</option>
+                <option value="50.0">Panel 30kg/m3</option>
+                <option value="6.66">Cemento 500kg/m3</option>
+              </select>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <table onchange="Unidad(),CalcPotencia()" class="table">
+        <thead>
+          <tr>
+            <th> </th>
+            <th> Ancho </th>
+            <th> Altura </th>
+            <th> Tráfico </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bolder">
+              <span> Puerta Hermética Pret. Lado A <input type="checkbox" id="Puerta_Check1" checked> </span>
+            </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Puerta_Ancho1" value="0 m" disabled />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Puerta_Altura1" value="0 m" disabled />
+            </th>
+            <th>
+              <select class="form-select" id="Select_Trafico1">
+                <option value="75_110_110">Pobre</option>
+                <option value="150_200_200" selected>Moderado</option>
+                <option value="300_365_365">Intenso</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder">
+              <span> Puerta Hermética<input type="checkbox" id="Puerta_Check2"> </span>
+            </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Puerta_Ancho2" value="0.8 m" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Puerta_Altura2" value="1.9 m" />
+            </th>
+            <th>
+              <select class="form-select" id="Select_Trafico2">
+                <option value="75_110_110">Pobre</option>
+                <option value="150_200_200" selected>Moderado</option>
+                <option value="300_365_365">Intenso</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder">
+              <span> Puerta Hermética <input type="checkbox" id="Puerta_Check3"> </span>
+            </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Puerta_Ancho3" value="0.8 m" />
+            </th>
+            <th>
+              <input type="text" class="form-control" name="m" id="Puerta_Altura3" value="1.9  m" />
+            </th>
+            <th>
+              <select class="form-select" id="Select_Trafico3">
+                <option value="75_110_110">Pobre</option>
+                <option value="150_200_200" selected>Moderado</option>
+                <option value="300_365_365">Intenso</option>
+              </select>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <table onchange="Unidad(),CalcPotencia()" class="table">
+        <thead>
+          <tr>
+            <th colspan="4"> PROPIEDAD DE CÁMARA Y CARGAS TÉRMICAS</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: start;">
+          <tr>
+            <th class="bolder"> Distancia entre <br> Evap y U.C.:</th>
+            <th>
+              <input type="text" class="form-control" name="m" id="DistanciaEVUC" value="10 m" />
+            </th>
+            <th class="bolder"> Abatimiento</th>
+            <th>
+              <input type="checkbox" id="Abatimiento">
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> Densidad<br>de Carga:</th>
+            <th>
+              <input type="text" class="form-control" name="kg/m3" id="Densidad" value="250 kg/m3" />
+            </th>
+            <th class="bolder"> Volumen<br>útil:</th>
+            <th>
+              <input type="text" class="form-control" name="%" id="Vol_Util" value="80 %" />
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> Renovación<br>diario:</th>
+            <th>
+              <input type="text" class="form-control" name="%" id="Ren_Diario" value="10 %" />
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> Tiempo de<br>Congelación: </th>
+            <th>
+              <input type="text" class="form-control" name="h" id="Time_Cong" value="18 h" />
+            </th>
+            <th class="bolder"> Tiempo de<br>Compresor: </th>
+            <th>
+              <input type="text" class="form-control" name="h" id="Time_Comp" value="18 h" />
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder"> Producto: </th>
+            <th>
+              <select class="form-select" id="Select_Product" onchange="PreterminadoProducto()">
+              </select>
+            </th>
+            <th class="bolder"> Temp.<br>Carga: </th>
+            <th>
+              <input type="text" class="form-control" name="°C" id="Temp_Carga" value="25 °C" />
+            </th>
+          </tr>
+          <th class="bolder">Temp. de<br>Congelación:</th>
+          <th>
+            <input type="text" class="form-control" id="Temp_Cong" name="°C" value="-0.6 °C" />
+          </th>
+          <th class="bolder">C.P pre-Congelado:</th>
+          <th>
+            <input type="text" class="form-control" name="J/(kg K)" id="CP_NCong" value="3530 J/(kg K)" />
+          </th>
+          </tr>
+          <tr>
+            <th class="bolder">C.P post-Congelado:</th>
+            <th>
+              <input type="text" class="form-control" name="J/(kg K)" id="CP_Cong" value="1770 J/(kg K)" />
+            </th>
+            <th class="bolder">Calor<br>Latente:</th>
+            <th>
+              <input type="text" class="form-control" name="kJ/kg" id="CP_Latente" />
+            </th>
+          </tr>
+          <tr>
+            <th class="bolder">Calor de<br>Respiración:</th>
+            <th>
+              <input type="text" class="form-control" name="W/kg" id="CP_Resp" value="0 W/kg" />
+            </th>
+            <th class="bolder">Carga<br>Seguridad:</th>
+            <th>
+              <input type="text" class="form-control" name="%" id="Otras_Cargas" value="0 %" />
+            </th>
+          </tr>
+          <th class="bolder">Proporción<br>envoltorio:</th>
+          <th>
+            <input type="text" class="form-control" name="%" id="Envoltorio" value="10 %" />
+          </th>
+          <th class="bolder">C.P<br>Envoltorio:</th>
+          <th>
+            <input type="text" class="form-control" name="J/(kg K)" id="CP_Envoltorio" value="1670 J/(kg K)" />
+          </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th id="Table_seleccion_equipo" style="display: none;align-items: center;">SELECCIÓN DE EQUIPOS RIVACOLD</th>
+          <th id="Table_seleccion_camara" style="display: none;align-items: center;">SELECCIÓN DE CÁMARA COLDKIT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th id="Seleccion_equipo" style="display: none;"> </th>
+          <th id="Seleccion_camara" style="display: none;"> </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <nav class="navbar sticky-bottom">
+    <div class="position-absolute top-0 start-50 translate-middle">
+      <button type="button" onclick="PrintCalculadora()">
+        <i class="bi bi-printer"> </i>
+      </button>
+    </div>
+  </nav>
+</body>
+
+<script src="./controller.js" async></script>
+<script src="../functAux/Funct_Print.js" async></script>
+<script src="../functAux/Funct_Interpolacion.js" async></script>
+
+</html>

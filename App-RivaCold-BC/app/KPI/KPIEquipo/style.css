@@ -1,0 +1,51 @@
+tbody tr.valor {
+    color: white;
+}
+
+label,
+th,
+tr {
+    font: bolder 12pt Arial;
+    print-color-adjust: exact;
+    vertical-align: bottom;
+    padding: 0;
+    margin: 0;
+}
+
+select {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+input {
+    text-align: center;
+    padding: 0;
+}
+
+table {
+    text-align: center;
+    color: black;
+}
+
+@media print {
+
+    input,
+    button,
+    label {
+        display: none;
+    }
+}
+
+div.row,
+div.col {
+    text-align: center;
+    align-self: center;
+    align-self: center;
+    align-content: center;
+}
+
+tr#headTotal {
+    color: white;
+}

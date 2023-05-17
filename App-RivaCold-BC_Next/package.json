@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "name": "app-rivacold-bc",
+  "version": "2.0.0",
+  "CompanyName": "Basic Conection Systems S.L.",
+  "description": "RivaColdSelect Program from Basic Conection Systems",
+  "copyright": "Copyright © 2023 Basic Conection Systems S.L.",
+  "author": "Basic Conection Systems S.L.",
+  "license": "ISC",
+  "main": "app/background.js",
+  "scripts": {
+    "dev": "nextron",
+    "build": "nextron build"
+  },
+  "dependencies": {
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0",
+    "fake-progress": "^1.0.4",
+    "localforage": "^1.10.0",
+    "node-adodb": "^5.0.3",
+    "tedious": "^16.0.0"
+  },
+  "devDependencies": {
+    "next": "^13.4.1",
+    "nextron": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "electron": "^24.1.3",
+    "electron-builder": "^23.6.0",
+    "yarn": "^1.22.19"
+  },
+  "build": {
+    "appId": "com.electron.rivacoldselect",
+    "win": {
+      "target": "nsis",
+      "icon": "./resources/icono RIVA.jpg"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "./resources/icono.tif"
+    },
+    "extraResources": [
+      {
+        "from": "./node_modules/node-adodb/lib/adodb.js",
+        "to": "adodb.js"
+      }
+    ]
+  },
+  "repository": "https://github.com/Hu1a1a/App-RivaCold-BC.git"
+}

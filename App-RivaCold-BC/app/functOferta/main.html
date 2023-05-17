@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
+    <title> App RivaCold BC - Plantilla de Oferta </title>
+</head>
+<header>
+    <img src="../../resources/WebEco.png" style="height:1.8cm;width:auto;display:inline-block">
+    <table style="display: inline-block;vertical-align:bottom;margin-left:3.8cm;">
+        <tbody style="font:normal 7pt Arial;">
+            <tr>
+                <td style="text-align:right">BASIC CONNECTION SYSTEMS, S.L. </td>
+            </tr>
+            <tr>
+                <td style="text-align:right">CL JULI GALVE BRUSSON, 9 - 11 - P.I. BADALONA SUD</td>
+            </tr>
+            <tr>
+                <td style="text-align:right">08918 BADALONA - Barcelona - ESPAÑA</td>
+            </tr>
+            <tr>
+                <td style="text-align:right">Telf.: +34934694099 - 902431214 Fax: +34933941559</td>
+            </tr>
+            <tr>
+                <td style="text-align:right">
+                    <a style="color:green; text-decoration:none;"
+                        href="mailto:comercial@e-bcsystems.com">comercial@e-bcsystems.com</a> -
+                    <a style="color:green; text-decoration:none;"
+                        href="https://www.e-bcsystems.com/">www.e-bcsystems.com</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <img src="../../resources/BCSYSTEMS.png" style="height:1.8cm;width:auto;display:inline-block;">
+    <div id="CabeceraOferta" oninput="GuardarDatos()">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <table>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td>
+                                    <label style="font: bolder 9.5pt Arial;">C.I.F.: </label>
+                                    <input type="text" style="font: normal 9.5pt Arial;width: 70%;" id="Oferta_CIF">
+                                </td>
+                                <td>
+                                    <label style="font: bold 9.5pt Arial;">Nº CLIENTE: </label>
+                                    <input type="text" style="font: normal 9.5pt Arial;width: 60%;"
+                                        id="Oferta_NCliente">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <table>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td>
+                                    <input type="text" style="font-weight:bolder;" id="Oferta_RazónSocial">
+                                    <input type="text" id="Oferta_Dirección">
+                                    <input type="text" id="Oferta_CP">
+                                    <input type="text" id="Oferta_Pais">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Telf: </label>
+                                    <input type="text" id="Oferta_Telf" style="width: 40%;">
+                                    <label>Fax: </label>
+                                    <input type="text" id="Oferta_Fax" style="width: 40%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>e-mail: </label>
+                                    <input type="text" style="width: 85%;" id="Oferta_Email">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Para: </label>
+                                    <input type="text" style="width: 85%;" id="Oferta_Solicitante">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <table>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td>
+                                    <div style="text-align: right;">
+                                        <label style="font: bold 9.5pt Arial;">OFERTA DE VENTA Nº </label>
+                                        <input id="Oferta_NumOferta" type="text"
+                                            style="font: normal 9.5pt Arial;width: 90pt">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <table>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td><label>Validez:</label>
+                                    <input type="text" id="FechaValidez" style="width:30%;">
+                                    <label>Fecha:</label>
+                                    <input type="text" id="FechaActual" style="width:30%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Situación: </label>
+                                    <input type="text" id="Oferta_Situacion" style="width:80%">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>S/Solicitud: </label>
+                                    <input type="text" style="width:80%" id="Oferta_Solicitud">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Referencia: </label>
+                                    <input type="text" style="width:80%" id="Oferta_Referencia">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" id="Oferta_Referencia2"></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" id="Oferta_Referencia3"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>De: </label>
+                                    <input type="text" style="width:90%" id="Oferta_Solicitado">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <table>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>
+                                <label style="font: bold 7.5pt">CONDICIONES:
+                                </label>
+                                <label style="font: normal 5.5pt Arial;"> (no indicadas, ver condiciones generales de
+                                    venta)
+                                </label>
+                                <input style="font: bold 6.5pt Arial;text-align:right;width: 15%;" type="text"
+                                    value="AC: 0001">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <table style="width:100%">
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row detalle">
+            <div class="col-6">
+                <div class="row">
+                    <table>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td><label>Plazo de entrega: </label>
+                                    <input type="text" id="Oferta_PlazoEntrega" style="width: 70%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Portes: </label>
+                                    <input type="text" id="Oferta_Portes" style="width: 80%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Embalaje: </label>
+                                    <input type="text" id="Oferta_Embalaje" style="width: 80%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Forma de Pago: </label>
+                                    <input type="text" id="Oferta_FormaPago" style="width: 70%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Observaciones.: </label>
+                                    <textarea id="Oferta_Observacion" rows="3"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <table id="Table_DireccionEntrega">
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td><label>Dirección de Entrega: </label>
+                                    <input type="text" style="width: 100%;" id="Oferta_Dir1">
+                                    <input type="text" style="width: 100%;" id="Oferta_Dir2">
+                                    <input type="text" style="width: 100%;" id="Oferta_Dir3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Telf: </label>
+                                    <input type="text" style="width: 40%;" id="Oferta_Tel2">
+                                    <label>Fax: </label>
+                                    <input type="text" style="width: 40%;" id="Oferta_Fax2">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="row" onchange="ModifTable()" id="Oferta_Tabla">
+        <label style="font: bolder 10pt Arial;">DETALLE: </label>
+        <table id="Table_Detalle">
+            <thead id="thead_Detalle" class="table-group-divider">
+                <tr style="vertical-align:middle;text-align: center;">
+                    <th scope="col" style="width: 03%;">Item</th>
+                    <th scope="col" style="width: 20%;">Referencia</th>
+                    <th scope="col" style="width: 35%;">Descripción</th>
+                    <th scope="col" style="width: 05%;">Cant. UE</th>
+                    <th scope="col" style="width: 10%;">Precio<br>€/u</th>
+                    <th scope="col" style="width: 06%;">Dto. %</th>
+                    <th scope="col" style="width: 10%;">Neto €/u</th>
+                    <th scope="col" style="width: 13%;">Total<br>NETO €</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_Detalle" class="table-group-divider">
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<footer oninput="GuardarDatos()">
+    <div class="row" onchange="ModifTable()">
+        <div class="table-group-divider"></div>
+        <div class="col-7">
+            <div class="row">
+                <div class="col-1"> </div>
+                <div class="col-2" style="text-align: center;">
+                    <h7 style="margin-top: 20px; display:none" id="label_Portes"><br>Portes:</h7>
+                    <input class="Money€" type="text" style="text-align:center;display:none" value="0 €"
+                        id="Coste_Portes">
+                </div>
+                <div class="col-4"> </div>
+                <div class="col-5">
+                    <h5 style="text-align: center;margin-top: 5px;"> TOTAL OFERTA</h5>
+                    <h5 id="TotalOferta" style="text-align: center;"> €</h5>
+                </div>
+                <div class="table-group-divider" id="LineaDivisionImpuesto"></div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <table id="Table_Impuesto" style="width:
+100%;vertical-align:middle; margin-top: 5px;height: 100%;">
+                        <thead>
+                            <tr style="vertical-align:middle;text-align:center">
+                                <th id="DescuentoPPC" style="width: 20%;">Dto. P.P.</th>
+                                <th>Base Imponible</th>
+                                <th style="width: 10%;" id="Placelabel_IVA">IVA</th>
+                                <th id="Placelabel_Impuesto_IVA">Impuesto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="vertical-align:middle;text-align:center">
+                                <td id="tdDescuentoPP"><input type="text" value="0 %" id="DescuentoPP"
+                                        style="text-align: center;"></td>
+                                <td id="BaseImponible" style="text-align: center;"></td>
+                                <td><input type="text" id="IVA" value="21 %" style="text-align: center;"></td>
+                                <td id="ImpuestoIVA" style="text-align: center;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-3" id="PrecioTotalIva">
+                    <h6 style="text-align: center;margin-top: 5px;">TOTAL</h6>
+                    <h6 id="TotalOfertaIVA" style="text-align: center;">€</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div style="border-left:2px solid black;height: 100%;text-align:left;">
+                <div style="text-align: left;padding-left: 10px;"> Acepto: </div>
+                <div style="text-align: right">(Firma y Sello)</div>
+            </div>
+        </div>
+        <div class="table-group-divider"></div>
+    </div>
+    <dt style="font-size:x-small;text-align: center;">
+        Reg. Merc. de Barcelona, Tomo 35098, Folio 204, hoja B-260853, Inscripción 1 - NIF: ES-B63034227</dt>
+</footer>
+
+<!-- Modal Registro de oferta -->
+<div class="modal fade" id="RegistroAzure" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registro Oferta</h5>
+                <input type="radio" class="btn-check" name="btnradio" autocomplete="off" id="Buton_RegistrarOferta">
+                <label class="btn btn-outline-primary" onclick="GuardarRegistro()">Registrar Oferta</label>
+                <button type="button" class="bi bi-x-lg" style="font-size:25px;" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MensajeRegistro" style="text-align:center;color: red;"> </div>
+                <table class="table" style="width: 100%;" id="table_registro_oferta">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Num.Oferta</th>
+                            <th scope="col">Referencia</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col" style="text-align: center;">Operación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Registro de oferta Local -->
+<div class="modal fade" id="RegistroLocal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registro Oferta</h5>
+                <input type="radio" class="btn-check" name="btnradio" autocomplete="off" id="Buton_RegistrarOferta">
+                <label class="btn btn-outline-primary" onclick="BorrarRegistroLocal()">Borrar Registro Local</label>
+                <button type="button" class="bi bi-x-lg" style="font-size:25px;" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table" style="width: 100%;" id="table_registro_oferta_local">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Num.Oferta</th>
+                            <th>Referencia</th>
+                            <th>Cliente</th>
+                            <th>Version</th>
+                            <th style="text-align: center;">Recuperar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Ficha cliente -->
+<div class="modal fade" id="FichaCliente" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ficha Cliente</h5>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" id="FunctBusquedaCliente" placeholder="Realizar Búsqueda"
+                    style="width: 100%;" oninput="Busqueda3('FunctBusquedaCliente', 'FunctResultadoCliente')">
+                <select class="form-select" size="10" id="FunctResultadoCliente"
+                    onchange="Seleccionar3( 'FunctResultadoCliente')"></select>
+                <textarea id="DatosCliente" style=" overflow:auto"></textarea>
+            </div>
+            <div class="modal-footer">
+                Realizar búsqueda por CIF, Numero de cliente, Sigla de empresa, Razón social o Teléfono.
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    onclick="Aplicar2('FunctResultadoCliente');GuardarDatos()">Aplicar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Referencia de articulo -->
+<div class="modal fade" id="AñadirRef" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Añadir Referencia</h5>
+                <button onclick="AppereSearch()"
+                    style="color: black;padding:none;border:none;background:none;font-size:25px;outline:none;text-decoration:none;vertical-align:middle;">
+                    <i class="bi bi-search"><a style="font-size: small;">Buscar</a></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tbody>
+                        <tr>
+                            <select class="form-select" id="list_type" onchange="SeleccionarModelo()">
+                                <option value="Tarifa0000">Tarifa GoManage</option>
+                                <option value="Eq">Equipo</option>
+                                <option value="Evap">Evaporador</option>
+                                <option value="Cond">Condensador</option>
+                                <option value="Central">Central</option>
+                            </select>
+                        </tr>
+                        <tr>
+                            <div id="ModalBuscador" style="display: none;">
+                                <input type="text" class="form-control" id="FunctBusqueda"
+                                    placeholder="Realizar Búsqueda" style="width: 100%;"
+                                    oninput="Busqueda2('FunctBusqueda','FunctResultado')">
+                                <select class="form-select" size="10" id="FunctResultado"
+                                    onchange="Seleccionar2('FunctResultado');CalculoPrecio()"></select>
+                                <span class="input-group-text" id="BusquedaMarca" style="display:none"></span>
+                                <span class="input-group-text" id="BusquedaTipo" style="display:none"></span>
+                                <span class="input-group-text" id="BusquedaGama" style="display:none"></span>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div id="ModalOpcion">
+                                <select class="form-select" id="list_Gama" onchange="SeleccionarGama()">
+                                </select>
+                                <select class="form-select" id="list_modelo" onchange="SeleccionarProducto()">
+                                </select>
+                            </div>
+                        </tr>
+                        <tr> <input id="RefModelo" class="form-control">
+                        </tr>
+                        <tr> <textarea class="form-control" id="textoModelo"></textarea> </tr>
+                    </tbody>
+                </table>
+                <table onchange="CalculoPrecio()">
+                    <tbody>
+                        <tr>
+                            <td> <label> Precio (€): </label> </td>
+                            <td> <label> Cantidad (und): </label> </td>
+                            <td> <label> Precio Neto (€): </label> </td>
+                            <td> <label> Precio Neto Total(€): </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" class="form-control" id="Precio"> </td>
+                            <td> <input type="text" class="form-control" id="Cantidad"> </td>
+                            <td> <input type="text" class="form-control" id="PrecioNeto"> </td>
+                            <td> <input type="text" class="form-control" id="PrecioNetoTotal"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table onchange="CalculoDescuento()">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label> Dto. 1 (%): </label>
+                            </td>
+                            <td>
+                                <label> Dto. 2 (%): </label>
+                            </td>
+                            <td>
+                                <label> Dto. 3 (%): </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" id="dto1" value="0,00 %">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="dto2" value="0,00 %">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="dto3" value="0,00 %">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <label> Dto. Total (%): </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <input type="text" class="form-control" value="0,00 %" id="dto.Final" readonly>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="RegistrarModelo()">Registrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Condicion de entrega -->
+<div class="modal fade" id="CondEntrega" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Condición de entrega</h5>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" id="EntregaInmediata"
+                            onchange="DisableInput('EntregaInmediata','PlazoEntrega')"> Entrega Inmediata
+                    </div>
+                    <input type="text" class="form-control" id="PlazoEntrega" placeholder="Plazo de entrega">
+                </div>
+                <label for="list_Portes"> Portes: </label>
+                <select class="form-select" id="list_Portes">
+                    <option>0DE DEBIDOS</option>
+                    <option selected>0PA PAGADOS</option>
+                    <option>0SM SUS MEDIOS</option>
+                    <option>0TI TRASIEGO INTERNO</option>
+                    <option>CFR COSTE Y FLETE</option>
+                    <option>CIF COSTE, SEGURO Y FLETE</option>
+                    <option>CIP TTE Y SEGUROS PAGADOS HASTA</option>
+                    <option>CPT TRANSPORTE PAGADO HASTA</option>
+                    <option>DAF ENTREGADO EN FRONTERA</option>
+                    <option>DAP ENTREGA DESTINO SIN DESPACHO</option>
+                    <option>DDI ENTREGADO DERECHOS PAGADOS</option>
+                    <option>DDP ENTREGADO DERECHOS PAGADOS</option>
+                    <option>DDU ENTREGADO DERECHOS NO PAGADOS</option>
+                    <option>DEQ ENTREGADO EN MUELLE</option>
+                    <option>DES ENTREGADO SOBRE BUQUE</option>
+                    <option>EXW EX-WORKS</option>
+                    <option>FAS FRANCO A PIE DE BUQUE</option>
+                    <option>FCA FRANCO TRANSPORTISTA</option>
+                    <option>FOB FRANCO A BORDO</option>
+                </select>
+                <label for="list_Embalaje"> Embalaje: </label>
+                <select class="form-select" id="list_Embalaje">
+                    <option selected>Tipo estándar incluido</option>
+                    <option>BL - Blister</option>
+                    <option>BO - Bolsa</option>
+                    <option>BT - Bote</option>
+                    <option>CJ - Caja</option>
+                    <option>CO - Conjunto</option>
+                    <option>ES - Estuche</option>
+                    <option>GR - Gramo</option>
+                    <option>JU - Juego</option>
+                    <option>KG - Kilogramo</option>
+                    <option>Kit - BDM</option>
+                    <option>KT - Kit</option>
+                    <option>MC - m2</option>
+                    <option>ML - Metro Lineal</option>
+                    <option>MQ - Metro Cubico</option>
+                    <option>MT - Metro</option>
+                    <option>NR - Numero</option>
+                    <option>PL - Palet</option>
+                    <option>PZ - Pieza BDM</option>
+                    <option>RL - Rollo</option>
+                    <option>RT - Rotoli</option>
+                    <option>UN - Unidad</option>
+                </select>
+                <label for="list_FormadePago">Forma de Pago:</label>
+                <select class="form-select" id="list_FormadePago">
+                    <option selected>La habitual</option>
+                    <option>001 Contado</option>
+                    <option>002 Giro 30 días</option>
+                    <option>003 Giro 45 días</option>
+                    <option>004 GIRO</option>
+                    <option>005 Giro 60 días</option>
+                    <option>006 Giro 60 días</option>
+                    <option>007 Giro 60 días</option>
+                    <option>008 Giro 30-60 días</option>
+                    <option>009 Giro 30,60 días</option>
+                    <option>010 Giro a la vista</option>
+                    <option>011 Pagare 180 días</option>
+                    <option>012 Pagare 33 días</option>
+                    <option>013 Pagare 60 días</option>
+                    <option>014 Pagare 60 días</option>
+                    <option>015 Pagare 90 días</option>
+                    <option>016 Pagare 150 días</option>
+                    <option>017 Pagare</option>
+                    <option>018 Pagaré 30-60-90</option>
+                    <option>019 PAGARE</option>
+                    <option>020 talon 30 días</option>
+                    <option>021 Talon 60 días</option>
+                    <option>022 Talon 60 días</option>
+                    <option>023 TALON 15 días</option>
+                    <option>024 Giro 15 días</option>
+                    <option>025 Talón</option>
+                    <option>026 TRANSFER.150 días</option>
+                    <option>027 LETRA ACEPTADA 60 D</option>
+                    <option>028 Giro 30,60,90 días</option>
+                    <option>029 Giro 60 días</option>
+                    <option>030 transferencia</option>
+                    <option>031 Transferencia 15 d</option>
+                    <option>032 tranferencia 30 días</option>
+                    <option>033 Transferencia</option>
+                    <option>034 Transferencia 60 d</option>
+                    <option>035 Transf. 120 días</option>
+                    <option>036 Giro 150 días</option>
+                    <option>037 Pagaré 30/60 día</option>
+                    <option>038 Giro 60 días</option>
+                    <option>039 Pago Dom. 60 días</option>
+                    <option>040 Giro 6 meses 1x mes</option>
+                    <option>041 Transferencia 45 dia</option>
+                    <option>042 Giro Vist y 30 días</option>
+                    <option>043 Anticipo y Giro 60</option>
+                    <option>044 Giro vista y 30,60</option>
+                    <option>045 ANTICIPO</option>
+                    <option>046 Antic. 50% y Giro 60</option>
+                    <option>047 Confirming 150 días</option>
+                    <option>048 Pagare 60 días</option>
+                    <option>049 Swift 90 y 120</option>
+                    <option>050 SEPTIEMBRE</option>
+                    <option>051 Anticipo y Trans. 60</option>
+                    <option>052 CONTADO</option>
+                    <option>053 Giro</option>
+                    <option>054 Giro 120 días</option>
+                    <option>055 Antic. y Giro 60</option>
+                    <option>056 Giro 30-60-90-120</option>
+                    <option>057 GIRO 90-120 días</option>
+                    <option>058 GIRO 30 Y 60 días</option>
+                    <option>059 Transferencia 90 d.</option>
+                    <option>060 30% ANTIC/GIRO 90 DÍAS</option>
+                    <option>061 GIRO 6 MESES</option>
+                    <option>062 SERVIDO FABRICA</option>
+                    <option>063 Confirming 45 días</option>
+                    <option>064 Transferencia 70 d</option>
+                    <option>065 CONT+TRANSF. A 30 FF</option>
+                    <option>066 EFECTIVO</option>
+                    <option>068 50% ANTIC/50% ENTRE</option>
+                    <option>069 TALON 60 DÍAS</option>
+                    <option>071 Giro 60 días</option>
+                    <option>072 Giro 60 días</option>
+                    <option>074 Confirmnig 60 días</option>
+                    <option>075 Giro</option>
+                    <option>076 GIRO 60-90-120</option>
+                    <option>077 Confirming 90</option>
+                    <option>078 Transferencia 90</option>
+                    <option>079 Giro 30-60 días</option>
+                    <option>080 Transf vista,30 y 60</option>
+                    <option>081 Giro</option>
+                    <option>082 Confirming 120 días</option>
+                    <option>083 VARIABLE</option>
+                    <option>084 SEGUN ACUERDO</option>
+                    <option>085 TRANS. Y DOCUM.</option>
+                    <option>086 Giro 45 días</option>
+                    <option>087 Pago Dom. 30-60-90</option>
+                    <option>088 Confirming 210 días</option>
+                    <option>093 20/11/2014</option>
+                    <option>094 talon 60 días</option>
+                    <option>095 Confirming 60 días</option>
+                    <option>096 TARJETA AB</option>
+                    <option>097 CONTRAREEMBOLSO</option>
+                    <option>098 COMPENSACIÓN</option>
+                    <option>099 COMPENSACIÓN</option>
+                </select>
+                <label for="list_DireccionEnvio">Dirección de Entrega: </label>
+                <select class="form-select" id="list_DireccionEnvio">
+                    <option selected>Dirección habitual</option>
+                    <option>Pendiente de confirmar</option>
+                </select>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="CondicionEntrega()">Aplicar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="nav flex-column">
+    <div class="position-fixed top-50 start-0 translate-middle-y">
+        <button data-bs-toggle="modal" data-bs-target="#CondEntrega">
+            <i data-bs-title="Ajustar condición de entrega" class="bi
+bi-box-seam" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button> <button type="button" data-bs-toggle="modal" data-bs-target="#FichaCliente">
+            <i data-bs-title="Acceder a la ficha de cliente" class="bi
+bi-person" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip">
+            </i>
+        </button> <br>
+        <button onclick="AltaTexto()">
+            <i data-bs-title="Alta linea de texto" class="bi bi-receipt" data-bs-toggle="tooltip"
+                data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button>
+
+        <button data-bs-toggle="modal" data-bs-target="#AñadirRef">
+            <i data-bs-title="Alta linea de articulo" class="bi
+bi-plus-square" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button> <br>
+        <button onclick="PrintOferta()">
+            <i class="bi bi-printer"> </i>
+        </button> <button onclick="ClearDB(),GuardarDatos()">
+            <i data-bs-title="Nueva oferta" class="bi bi-backspace" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"> </i>
+        </button>
+        <br><br><br>
+        <button onclick="Display_Tabla('Table_Detalle', 5)">
+            <i data-bs-title="Ocultar descuento" class="bi bi-percent" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"> </i>
+        </button>
+        <button onclick="Display_Tabla('Table_Detalle', 4)">
+            <i data-bs-title="Ocultar precio de venta" class="bi
+bi-currency-euro" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button> <br>
+        <button onclick="Display_Impuesto()">
+            <i data-bs-title="Ocultar Inpuesto" class="bi
+bi-airplane-engines" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button>
+        <button id="button_DescuentoPP" onclick="Display_DescuentoPP()">
+            <i data-bs-title="Ocultar dto. pronto pago" class="bi
+bi-piggy-bank" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button> <br>
+        <button id="button_IGIC" onclick="IGIC()">
+            <i class="bi bi-globe-europe-africa" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip" data-bs-title="IVA/IGIC"> </i>
+        </button>
+        <button id="button_Porte" onclick="Display_Portes()">
+            <i class="bi bi-truck" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip" data-bs-title="Portes"> </i>
+        </button>
+        <br><br><br>
+        <button data-bs-toggle="modal" data-bs-target="#RegistroAzure" onclick="RegistroOferta()">
+            <i data-bs-title="Base de datos Online" class="bi bi-globe2" data-bs-toggle="tooltip"
+                data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button>
+        <button onclick="RegistroOfertaLocal()" data-bs-toggle="modal" data-bs-target="#RegistroLocal">
+            <i data-bs-title="Historico de oferta" class="bi bi-clock-history" data-bs-toggle="tooltip"
+                data-bs-placement="top" data-bs-custom-class="custom-tooltip"> </i>
+        </button>
+    </div>
+</nav>
+<script src="./controller.js" async></script>
+<script src="./registroAzure.js" async></script>
+<script src="./registroLocal.js" async></script>
+<script src="../functAux/Funct_Search.js" async></script>
+<script src="../functAux/Funct_Print.js" async></script>
+<script src="../functAux/Funct_tooltip.js" async></script>
+<script src="../functAux/Funct_Formate.js" async></script>
+
+</html>

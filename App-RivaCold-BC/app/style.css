@@ -1,0 +1,89 @@
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+
+nav i {
+  color: black;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  margin: 0;
+}
+
+
+table tbody th,
+table tbody tr {
+  font-weight: normal;
+  vertical-align: middle;
+  padding: 0%;
+}
+
+table thead th,
+table thead tr,
+table tbody th.TagTipo {
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.apeare {
+  display: none
+}
+
+@media print {
+
+  .custom-tooltip {
+    --bs-tooltip-bg:
+  }
+
+  i,
+  nav,
+  button,
+  select,
+  div.col.none,
+  .none {
+    display: none;
+  }
+
+  .apeare {
+    display: flex
+  }
+
+  header {
+    page-break-before: always;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  body {
+    font: normal 9pt Arial;
+    width: 27.7cm;
+    min-height: 29.7cm;
+    padding: 0cm;
+    margin: 0cm auto;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+.col {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}

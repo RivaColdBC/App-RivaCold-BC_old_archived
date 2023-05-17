@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./style.css">
+  <title>RivaColdSelect - Función comparación producto</title>
+</head>
+
+<body>
+  <div class="container text-center">
+    <img src="../../resources/A4-21 cm Logo nuevo+arbol.jpg" style="width: 100%;
+    height: auto;" />
+    <hr class="hr4" />
+    <table>
+      <tr>
+        <th style="font: bolder 12pt Arial;" data-bs-toggle="tooltip" data-bs-placement="top"
+          data-bs-custom-class="custom-tooltip"
+          data-bs-title="La marca del equipo que se quiera buscar su correspondiente equivalente.">
+          Marca A
+        </th>
+        <th>
+          <select class="form-select" id="List_Type" onchange="SeleccionarMarca()" data-bs-toggle="tooltip"
+            data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="Seleccionar el tipo de equipo a realizar la seleccion de equivalencia.">
+            <option value="Eq">Equipo</option>
+            <option value="Evap">Evaporador</option>
+            <option value="Cond">Condensador</option>
+            <option value="Central">Central</option>
+          </select>
+        </th>
+        <th>
+          <select class="form-select" id="List_MarcaA" onchange="SeleccionarProveedor()" data-bs-toggle="tooltip"
+            data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="Seleccionar la marca del equipo a realizar la seleccion de equivalencia."></select>
+        </th>
+        <th>
+          <select class="form-select" id="List_Gama" onchange="SeleccionarGama()" data-bs-toggle="tooltip"
+            data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="Seleccionar la gama(Serie) del equipo a realizar la seleccion de equivalencia."></select>
+        </th>
+        <th>
+          <select class="form-select" id="List_Modelo" onchange="TextoConfiguracion();SeleccionarModelo()"
+            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="Seleccionar el modelo del equipo a realizar la seleccion de equivalencia."></select>
+        </th>
+      </tr>
+      <tr>
+        <th style="font: bolder 12pt Arial;" data-bs-toggle="tooltip" data-bs-placement="top"
+          data-bs-custom-class="custom-tooltip" data-bs-title="La marca del resultado de la comparativa equivalente.">
+          Marca B
+        </th>
+        <th></th>
+        <th>
+          <select class="form-select" id="List_MarcaB" onchange=";SeleccionarModelo()" data-bs-toggle="tooltip"
+            data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            data-bs-title="Seleccionar la marca que se quiera hacer la equivalencia."></select>
+        </th>
+        <th colspan="2">
+          <dt style="font-size: x-small; vertical-align: sub; padding: 0;">
+            Recomendación de equivalencia: es equivalente según ensayo técnico
+            de laboratorio igualar la temperatura
+          </dt>
+          <dt style="font-size: x-small; vertical-align: sub; padding: 0;">
+            ambiente de 35ºC de las competencias contra la temperatura
+            ambiente de 32ºC de la marca RivaCold.
+          </dt>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col-7">
+        <div class="row">
+          <div class="col-7">
+            <table class="table table-striped" id="Table_Price">
+              <thead>
+                <tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                  data-bs-title="El precio Neto de los equipos a comparar.">
+                  <th>Precio Marca A</th>
+                  <th>Precio Marca B</th>
+                </tr>
+              </thead>
+              <tbody id="Table_Price_Body">
+                <tr></tr>
+              </tbody>
+            </table>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="BotonMostrarPF" onchange="DatosEquivalencia()" />
+              <label class="form-check-label" for="flexCheckDefault">
+                Mostrar las potencias frigoríficas no disponibles.</label>
+              <input type="text" placeholder="DT (K)" id="Delta_T" style="width:
+          80px;text-align: center;padding: 0;height: 24px;font-size:
+          12px;vertical-align:text-top;" onchange="Delta_T();SeleccionarModelo();" value="0 K">
+            </div>
+          </div>
+          <div class="col-5">
+            <table class="table table-striped" id="Table_Type">
+              <thead>
+                <tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                  data-bs-title="Los criterios que se ha utilizado para filtrar los equipos equivalentes, en caso vacío, significa que se escoge todos los equipos del tipo seleccionado.">
+                  <th>Característica</th>
+                </tr>
+              </thead>
+              <tbody id="Table_Type_Body">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <table class="table table-striped" id="Table_PF">
+          <thead>
+            <tr>
+              <th id="tabla_text1">Temperatura Ambiente</th>
+              <th id="tabla_text2">Temperatura de Cámara</th>
+              <th>Potencia Frigorífica A</th>
+              <th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                data-bs-title="(*): Aproximación por las dos bandas; (+)(-): Aproximación por banda positiva o negativa.">
+                Potencia Frigorífica B
+              </th>
+              <th scope="col">% Diferencia de Marca B/A</th>
+            </tr>
+          </thead>
+          <tbody id="table_PF_body">
+            <tr></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-5">
+        <span style="font: bolder 12pt Arial;">Listado de modelos equivalente
+          Marca B</span>
+        <select class="form-select" size="10" id="List_Equiv" onchange="DatosEquivalencia()"
+          style="overflow-y: auto"></select>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">
+                Rango de tolerancia
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>
+                <button onclick="RangoEq(-1,'RangoNeg')" class="bi
+                  bi-file-arrow-down" style=" padding: 0; border: none;
+                  background: none;font-size: 50px;
+                  vertical-align: middle; "></button>
+                <input type="text" id="RangoNeg" onchange="SeleccionarModelo()" style=" width: 60px;
+                  border: none; text-align: center;
+                  font-size: 20px;
+                  vertical-align: middle; " />
+                <button onclick="RangoEq(+1,'RangoNeg')" class="bi
+                  bi-file-arrow-up" style=" padding: 0;
+                  border: none; background: none;
+                  font-size: 50px;
+                  vertical-align: middle; "></button>
+              </th>
+              <th>
+                <button onclick="RangoEq(-1,'RangoPos')" class="bi
+                  bi-file-arrow-down" style=" padding: 0; border: none;
+                  background: none;
+                  font-size: 50px; vertical-align: middle; "></button>
+                <input type="text" id="RangoPos" onchange="SeleccionarModelo()" style="width: 60px;
+                  border: none;text-align: center;
+                  font-size: 20px; vertical-align: middle;" />
+                <button onclick="RangoEq(+1,'RangoPos')" class="bi
+                  bi-file-arrow-up" style="
+                  padding: 0;
+                  border: none;
+                  background: none;
+                  font-size: 50px;
+                  vertical-align: middle;
+                  "></button>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</body>
+
+<nav class="navbar sticky-bottom">
+  <div class="position-absolute top-0 start-50 translate-middle">
+    <button data-bs-toggle="modal" data-bs-target="#Buscador">
+      <i class="bi bi-search" style=" color: black; padding: 0; border:
+          none; background: none; font-size: 40px; " data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip" data-bs-title="Buscador de
+          modelos">
+      </i>
+    </button>
+    <button type="button" onclick="PrintEquivalencia()">
+      <i class="bi bi-printer">
+      </i>
+    </button>
+  </div>
+</nav>
+<div class="modal fade" id="Buscador" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Buscado avanzado</h5>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="FunctBusqueda" placeholder="Realizar Búsqueda" style="width: 100%"
+          oninput="Busqueda1('FunctBusqueda','FunctResultado')" />
+        <select class="form-select" size="10" id="FunctResultado"></select>
+        <span class="input-group-text" id="BusquedaMarca" style="display:
+            none"></span>
+        <span class="input-group-text" id="BusquedaTipo" style="display:
+            none"></span>
+        <span class="input-group-text" id="BusquedaGama" style="display:
+            none"></span>
+        <span class="input-group-text" id="BusquedaRef" style="display:
+            none"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="Aplicar1('FunctResultado');;"
+          data-bs-dismiss="modal">
+          Aplicar
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./controller.js"></script>
+<script src="./search.js"></script>
+<script src="../functAux/Funct_tooltip.js"></script>
+<script src="../functAux/Funct_Print.js"></script>
+<script src="../functAux/Funct_Interpolacion.js"></script>
+
+</html>

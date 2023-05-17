@@ -1,0 +1,141 @@
+body {
+  font: normal 9.5pt Arial;
+  width: 21.9cm;
+  min-height: 29.7cm;
+  padding: 0.5cm;
+  margin: 0cm auto;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+div.col-6 {
+  padding: 0;
+}
+
+label {
+  font-weight: bold;
+  border: 0;
+}
+
+table tbody th,
+table tbody tr {
+  font-weight: normal;
+  vertical-align: top;
+  padding: 0%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+input {
+  margin: 0.5px;
+  border: 0.5px;
+  padding: 0.5px;
+  width: 100%;
+}
+
+select {
+  margin: 0;
+  border: 0;
+  width: 100%;
+}
+
+span {
+  height: 24px;
+  width: auto;
+}
+
+textarea {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+  vertical-align: middle;
+}
+
+td {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  vertical-align: middle;
+
+}
+
+table {
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+#Table_Detalle input,
+#Table_Detalle textarea {
+  font: normal 8.5pt Arial;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  width: 100%;
+  vertical-align: top;
+}
+
+#thead_Detalle th,
+#thead_Detalle tr,
+#thead_Detalle td {
+  align-items: center;
+  align-self: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#tbody_Detalle th,
+#tbody_Detalle tr,
+#tbody_Detalle td {
+  align-items: center;
+  align-self: center;
+  text-align: center;
+  vertical-align: top;
+}
+
+#tbody_Detalle th {
+  font: bolder 8.5pt Arial;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+#AñadirRef select {
+  margin-bottom: 10px;
+}
+
+div.row.detalle label,
+div.row.detalle input {
+  font-size: bolder 7pt Arial;
+  margin: 0.5px;
+  border: 0px;
+  padding: 0px;
+}
+
+tbody::before {
+  content: '';
+  display: block;
+  height: 1px;
+}
+
+#Table_Detalle tbody::before {
+  content: '';
+  display: block;
+  height: 4px;
+}
+
+tbody::after {
+  content: '';
+  display: block;
+  height: 0.5px;
+}
